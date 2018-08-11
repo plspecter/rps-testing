@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="game">
+
+        <h1>Rock, Paper, Scissors Game!</h1>
+
+        <p>"Press r, p or s to start playing!"</p>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var wins = 0,
+            losses = 0,
+            ties = 0;
+        var computerChoices = ["r", "s", "p"];
+
+        document.onkeyup = function (event) {
+            var userGuess = event.key;
+
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
+
+                if ((userGuess === "r") && (computerGuess === "s")) {
+                    win++;
+                } else if ((userGuess === "r") && (computerGuess === "p")) {
+                    losses++;
+                } else if ((userGuess === "s") && (computerGuess === "p")) {
+                    wins++;
+                } else if ((userGuess === "s") && (computerGuess === "r")) {
+                    losses++;
+                } else if ((userGuess === "p") && (computerGuess === "r")) {
+                    wins++;
+                } else if ((userGuess === "p") && (computerGuess === "s")) {
+                    losses++;
+                } else if ((userGuess === computerGuess)) {
+                    ties++;
+                } else {
+                    alert("Please enter a valid input");
+                }
+
+                var html =
+                    "<p>You choose " + userGuess + "</p>" +
+                    "<p>The computer chose " + computerGuess + "</p>" +
+                    "<p>wins: " + wins + "</p>" +
+                    "<p>losses: " + losses + "</p>" +
+                    "<p>ties: " + ties + "</p>";
+
+                document.getElementById("game").innerHTML = html;
+            }
+
+
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
